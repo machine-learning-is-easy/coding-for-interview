@@ -2,5 +2,13 @@ This repository, "coding-for-interview", is a collection of coding exercises and
 
 
 
-1. Linked List (./Linked List.md)
-2. 
+1. List
+2. String
+3. Binary Search 
+4. DFS 
+5. BFS 
+6. Backtracking 
+7. Dynamic Programming 
+8. Graph 
+9. Tree 
+10. Linked List
