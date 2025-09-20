@@ -1,5 +1,4 @@
 
-
 # need to ask question if the list has duplicate elements, if yes, then need to verify the duplicate elements are the same
 # or not
 class Solution:
