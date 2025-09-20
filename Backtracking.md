@@ -1,19 +1,20 @@
-27.	Backtracking
+# Backtracking
 Questions:
 Distinct value?
 Allow select the same value multiple times?
 Negative value?
 
-Keynotes
-1)	Backtracking by adding the visited position or letter to the seen hash table needs to be in the loop. While the DFS, adds the visited position can be at the beginning of the recursive function.
-2)	Backtracking to get the path in a tree, like the Lowest common ancestor
-3)	Backtracking work with a graph
+## Keynotes
+### 1)	Backtracking by adding the visited position or letter to the seen hash table needs to be in the loop. While the DFS, adds the visited position can be at the beginning of the recursive function.
+### 2)	Backtracking to get the path in a tree, like the Lowest common ancestor
+### 3)	Backtracking work with a graph
 
-39. combination sum
+### 39. combination sum
 Questions: 
-1.	allow selection of the same element multiple times or just select one time. If allowing selecting multiple times, the backtracking function needs iteration on the next index, 
-2.	Are all the elements positive or can be negative? If can be negative, select the element multiple times, otherwise, it will loop the current value forever.
+#### 1.	allow selection of the same element multiple times or just select one time. If allowing selecting multiple times, the backtracking function needs iteration on the next index, 
+#### 2.	Are all the elements positive or can be negative? If can be negative, select the element multiple times, otherwise, it will loop the current value forever.
 
+```python
 class Solution:
     def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
         # **********
@@ -41,10 +42,11 @@ class Solution:
         backtrack(target, [], 0)
 
         return results
+```
 
-40. Combination of the sum
+### 40. Combination of the sum
 The difference to the 39 is the array has duplicate elements, so need to count the element numbers.
-
+```python
 class Solution:
     def combinationSum2(self, candidates: List[int], target: int) -> List[List[int]]:
         results = []. # container to hold the final combinations
@@ -83,12 +85,13 @@ class Solution:
         backtrack(remain=target, curr=0)
 
         return results
+```
 
-
-77. Combinations
-78. Subsets
+### 77. Combinations
+### 78. Subsets
 77 and 78 are similar questions. We can use backtracking to solve it. 
 TIPS: add index as a recursive function, for loop starts from the index.
+```python
 class Solution:
     def subsets(self, nums: List[int]) -> List[List[int]]:
         def backtrack(first=0, curr=[]):
@@ -106,11 +109,12 @@ class Solution:
         n = len(nums)
         backtrack()
         return output
-
-140. Word Break II: 
+```
+### 140. Word Break II: 
 Tips: backtracking over the word set list until the string is empty
-46. Permutations (4Medium)
+### 46. Permutations (4Medium)
 Tip: position is the parameter of backtracking. The current position can be any of the values after an equal current index. In a for loop, iteration over the position after the current position switches the value and continues the switch until the end of the list. After each switch, need to switch back the value. ALLOW SAME PERMUTATION(OR THE VALUE OF THE LIST IS DISTINCT)
+```python
 
 class Solution:
     def permute(self, nums: List[int]) -> List[List[int]]:
@@ -137,14 +141,16 @@ class Solution:
         output = []
         backtrack()
         return output
-60. Permutation Sequence
+```
+### 60. Permutation Sequence
 The same with 46, just need to save the permutation and return if length of the return equal k.  
-47. Permutations II
+### 47. Permutations II
 Tips: the difference is not allowed to duplicate value in a permutation (which means the value of the list can be duplicated, in the permutation does not include the same value change position). Of course, this algorithm also applies the 46. 47 add a condition to the backtracking loop
 Tips: convert the list into a hash table. A combination list selects all possible values from the starting index of the list. the first index of the combination list is all the values in the list. then the second index of the combination list can be all the values after the current index (including the current index), iteration until the very end of the list.
  In the backtracking, when putting a number into the combination list, the value of the key decreases one until the value equals 0. Iteration over all the keys in the hash table until the combination list is filled up.
-# The biggest difference with 46 is the iteration in 47 is the hash table key. But the iteration in 46 is on the value of the next component of the list. iteration over the key in the hash table eliminates the duplicate permutation. 
-47 solutions also work to 46.
+ The biggest difference with 46 is the iteration in 47 is the hash table key. But the iteration in 46 is on the value of the next component of the list. iteration over the key in the hash table eliminates the duplicate permutation. 
+### 47 solutions also work to 46.
+```python
 class Solution:
     def permuteUnique(self, nums: List[int]) -> List[List[int]]:
         results = []
@@ -167,16 +173,17 @@ class Solution:
                     counter[num] += 1
 
         backtrack([], Counter(nums))
+```
+### 78. Subsets (similar with 46)
+### 90. Subsets II (similar with 47)
 
-78. Subsets (similar with 46)
-90. Subsets II (similar with 47)
-
-77. Combinations (Medium)
+### 77. Combinations (Medium)
 Tips: similar to permutation, the only difference is adding a k which is less than the length of the list. stop criteria is the length of the combination list is equal to k
-79. Word Search (Medium)
-51. N-Queens (Hard)
+### 79. Word Search (Medium)
+### 51. N-Queens (Hard)
 Tips: add row and col into a hash table, converting check can be placed to check if the row or column in the list is 1. When removing the queen, assign the row, column and hill diagonals and dale diagonals value to 0. 
 Backtracking parameter row number, for each row, add an iteration of column
+```python
 class Solution:
     def solveNQueens(self, n: int) -> list:
         # **********
@@ -217,11 +224,12 @@ class Solution:
         backtrack()
 
         return solution
-
-70. Climbing Stairs
-719. Find K-th Smallest Pair Distance
+```
+### 70. Climbing Stairs
+### 719. Find K-th Smallest Pair Distance
 TIPS: binary search:
 Another version is using heap.
+```python
 
 class Solution:
     def smallestDistancePair(self, nums, k: int) -> int:
@@ -248,4 +256,4 @@ class Solution:
                 right = mid
             else:
                 left = mid + 1
-
+```
